@@ -11,14 +11,9 @@ export default function MovieInfo() {
   const { movieId } = useParams();
   const location = useLocation();
 
-  // console.log(location.pathname);
-  // const url = location.pathname === '/' ? `movies/` : '';
-
-  // console.log(location.state);
-
-  const backLinkHref = location.state?.from ?? '/';
-
   // const backLinkHref = location.state.from;
+  const backLinkHref = location.state?.from ?? '/';
+  console.log(backLinkHref);
   useEffect(() => {
     (async function fetchMovieById() {
       try {
@@ -38,9 +33,11 @@ export default function MovieInfo() {
   return (
     <main>
       <Section>
-        {/* <BackLink to={backLinkHref} state={{ from: location }}> */}
+        {/* <BackLink to={backLinkHref} state={{ from: location }}>
+          Go back
+        </BackLink> */}
         <BackLink to={backLinkHref}>Go back</BackLink>
-        <MovieDetails movie={movie} />
+        <MovieDetails movie={movie}  />
       </Section>
       <Suspense fallback={<div>Loading...</div>}>
         <Outlet />

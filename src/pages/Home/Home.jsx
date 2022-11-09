@@ -8,7 +8,7 @@ export default function Home() {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const location = useLocation();
- 
+
   useEffect(() => {
     async function fetchMovies() {
       try {
@@ -30,7 +30,7 @@ export default function Home() {
         <main>
           <Section>
             <Heading>Trending today</Heading>
-            {movies && <MovieList movies={movies} location={location} />}
+            {movies && <MovieList movies={movies} state={location} />}
           </Section>
         </main>
       )}

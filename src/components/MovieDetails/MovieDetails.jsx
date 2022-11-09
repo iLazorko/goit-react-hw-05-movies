@@ -1,3 +1,5 @@
+import { Link, useLocation } from 'react-router-dom';
+
 import {
   MovieWrap,
   MovieInfoWrap,
@@ -11,6 +13,8 @@ import {
 export const MovieDetails = ({ movie }) => {
   const { title, poster_path, overview, release_date, vote_average, genres } =
     movie;
+  const location = useLocation();
+
 
   return (
     <>
@@ -53,10 +57,14 @@ export const MovieDetails = ({ movie }) => {
         </MovieInfoWrap>
         <Wrapper>
           <Item>
-            <StyledLink to="cast">Cast</StyledLink>
+            <StyledLink to="cast" state={{ from: location.state.from }}>
+              Cast
+            </StyledLink>
           </Item>
           <Item>
-            <StyledLink to="reviews">Reviews</StyledLink>
+            <StyledLink to="reviews" state={{ from: location.state.from }}>
+              Reviews
+            </StyledLink>
           </Item>
         </Wrapper>
       </MovieWrap>

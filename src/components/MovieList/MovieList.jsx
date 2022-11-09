@@ -7,10 +7,6 @@ import {
 } from './MovieList.styled.js';
 
 export const MovieList = ({ movies, state }) => {
-  // console.log(location.pathname);
-  // const a = location.pathname === '/' ? 'movies/' : '/';
-  // const a = location.pathname === 'movies/' ? 'movies' : '';
-
   return (
     <>
       <List>

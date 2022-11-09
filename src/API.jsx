@@ -40,7 +40,7 @@ export const getMovieByName = async (name, page) => {
   try {
     const fetchMovieByName = await axios.get(
       `search/movie/?api_key=${KEY}&language=en-US&query=${name}&page=${page}&include_adult=false`
-      // `search/movie/?api_key=${KEY}&language=en-US&query=harry&page=${page}&include_adult=false`
+      
     );
 
     return await fetchMovieByName.data;
@@ -50,9 +50,7 @@ export const getMovieByName = async (name, page) => {
 };
 
 // запит акторів
-// GET/movie/{movie_id}/credits
-//
-//api.themoviedb.org/3/movie/{movie_id}/credits?api_key=<<api_key>>&language=en-US
+
 export const getActors = async id => {
   try {
     const fetchActors = await axios.get(
