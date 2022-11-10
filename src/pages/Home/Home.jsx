@@ -16,7 +16,7 @@ export default function Home() {
       try {
         setIsLoading(true);
         const trendingMovies = await getTrendingMovies();
-        setMovies(prevState => [...prevState, ...trendingMovies]);
+        setMovies(trendingMovies);
         setIsLoading(false);
       } catch (error) {
         console.log(error);
