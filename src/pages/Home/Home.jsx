@@ -8,7 +8,6 @@ import { Heading, Section } from './Home.styled';
 export default function Home() {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
 
   const location = useLocation();
 
@@ -20,7 +19,6 @@ export default function Home() {
         setMovies(prevState => [...prevState, ...trendingMovies]);
         setIsLoading(false);
       } catch (error) {
-        setError(error);
         console.log(error);
       }
     }

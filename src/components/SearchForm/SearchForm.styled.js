@@ -33,6 +33,7 @@ const SearchBtn = styled.button`
   color: #ffffff;
   font-size: 20px;
   font-weight: 500;
+  cursor: pointer;
   transition: background-colo 300ms ease;
 
   &:focus,
