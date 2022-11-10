@@ -1,13 +1,13 @@
 import { Routes, Route } from 'react-router-dom';
 import { lazy } from 'react';
 
-
 const Layout = lazy(() => import('./Layout/Layout'));
 const Home = lazy(() => import('../pages/Home/Home'));
 const Movies = lazy(() => import('../pages/Movies/Movies'));
 const MovieInfo = lazy(() => import('../pages/MovieInfo/MovieInfo'));
 const Cast = lazy(() => import('./Cast/Cast'));
 const Reviews = lazy(() => import('./Reviews/Reviews'));
+const ErrorPage = lazy(() => import('./ErrorPage/ErrorPage'));
 
 export const App = () => {
   return (
@@ -20,6 +20,8 @@ export const App = () => {
             <Route path="cast" element={<Cast />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>
+
+          <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
     </>

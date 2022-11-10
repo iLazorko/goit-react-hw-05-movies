@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams, useLocation } from 'react-router-dom';
 import { getMovieByName } from '../../API';
-import { SearchForm } from './SearchForm/SearchForm';
+import { SearchForm } from '../../components/SearchForm/SearchForm';
 import { MovieList } from 'components/MovieList/MovieList';
 import { Section } from 'pages/Home/Home.styled';
 import { Loader } from '../../components/Loader/Loader';
