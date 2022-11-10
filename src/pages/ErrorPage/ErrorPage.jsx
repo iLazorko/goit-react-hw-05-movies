@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import { Wrap } from './ErrorPage.styled.js';
-import { BackLink } from '../../pages/MovieInfo/MovieInfo.styled.js';
+import { BackLink } from '../MovieInfo/MovieInfo.styled.js';
 
 export default function ErrorPage() {
   const location = useLocation();
