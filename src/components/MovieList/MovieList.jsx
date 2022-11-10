@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import {
   List,
   StyledLink,
@@ -30,4 +31,9 @@ export const MovieList = ({ movies, state }) => {
       </List>
     </>
   );
+};
+
+MovieList.propTypes = {
+  movies: PropTypes.array,
+  state: PropTypes.object,
 };

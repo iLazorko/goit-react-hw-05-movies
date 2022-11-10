@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getActors } from '../../API';
-
 import { Section } from '../../pages/Home/Home.styled.js';
+import { Loader } from '../../components/Loader/Loader';
 
 import {
   Heding,
@@ -15,13 +15,15 @@ import {
 export default function Cast() {
   const { movieId } = useParams();
   const [castList, setCastList] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     (async function fetchActors() {
+      setIsLoading(true);
       try {
         const movieCasts = await getActors(movieId);
-
         setCastList(movieCasts);
+        setIsLoading(false);
       } catch (error) {
         console.log(error.message);
       }
@@ -30,7 +32,8 @@ export default function Cast() {
 
   return (
     <Section>
-      {castList.length > 0 && (
+      {isLoading && <Loader />}
+      {!isLoading && castList.length > 0 && (
         <>
           <Heding>Cast</Heding>
           <CastList>

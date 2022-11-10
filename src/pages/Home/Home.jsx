@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { Loader } from '../../components/Loader/Loader';
 import { MovieList } from '../../components/MovieList/MovieList';
 import { getTrendingMovies } from '../../API';
 import { Heading, Section } from './Home.styled';
@@ -7,6 +8,8 @@ import { Heading, Section } from './Home.styled';
 export default function Home() {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
   const location = useLocation();
 
   useEffect(() => {
@@ -17,6 +20,7 @@ export default function Home() {
         setMovies(prevState => [...prevState, ...trendingMovies]);
         setIsLoading(false);
       } catch (error) {
+        setError(error);
         console.log(error);
       }
     }
@@ -25,7 +29,7 @@ export default function Home() {
 
   return (
     <>
-      {isLoading && <p> Loading...</p>}
+      {isLoading && <Loader />}
       {!isLoading && (
         <main>
           <Section>

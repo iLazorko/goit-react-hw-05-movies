@@ -1,5 +1,5 @@
-import { Link, useLocation } from 'react-router-dom';
-
+import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import {
   MovieWrap,
   MovieInfoWrap,
@@ -14,7 +14,6 @@ export const MovieDetails = ({ movie }) => {
   const { title, poster_path, overview, release_date, vote_average, genres } =
     movie;
   const location = useLocation();
-
 
   return (
     <>
@@ -45,13 +44,13 @@ export const MovieDetails = ({ movie }) => {
           <p>
             <InfoTitle>
               <b>Release date: </b>
-            </InfoTitle>{' '}
+            </InfoTitle>
             {release_date}
           </p>
           <p>
             <InfoTitle>
               <b>Vote average: </b>
-            </InfoTitle>{' '}
+            </InfoTitle>
             {vote_average}
           </p>
         </MovieInfoWrap>
@@ -70,4 +69,15 @@ export const MovieDetails = ({ movie }) => {
       </MovieWrap>
     </>
   );
+};
+
+MovieDetails.propTypes = {
+  movie: PropTypes.shape({
+    poster_path: PropTypes.string,
+    title: PropTypes.string,
+    overview: PropTypes.string,
+    release_date: PropTypes.string,
+    vote_average: PropTypes.number,
+    genres: PropTypes.array,
+  }).isRequired,
 };

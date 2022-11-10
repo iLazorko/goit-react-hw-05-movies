@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getReviews } from '../../API';
-
+import { Loader } from '../../components/Loader/Loader';
 import { Section } from '../../pages/Home/Home.styled.js';
 import {
   Heding,
@@ -18,12 +18,10 @@ export default function Reviews() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true);
-
     (async function fetchReviews() {
+      setIsLoading(true);
       try {
         const movieReviews = await getReviews(movieId);
-
         setReviews(movieReviews);
         setIsLoading(false);
       } catch (error) {
@@ -34,7 +32,8 @@ export default function Reviews() {
 
   return (
     <>
-      {reviews.length > 0 && (
+      {isLoading && <Loader />}
+      {!isLoading && reviews.length > 0 && (
         <Section>
           <Heding>Reviews</Heding>
           <List>
@@ -53,7 +52,7 @@ export default function Reviews() {
         </Section>
       )}
 
-      {reviews.length === 0 && (
+      {!isLoading && reviews.length === 0 && (
         <Section>
           <InfoMessage>
             Sorry, we don't have any reviews for this movie.

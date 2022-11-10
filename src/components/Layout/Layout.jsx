@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { GlobalStyle } from '../GlobalStyle.js';
 import { Header, Nav, LinkStyled } from './Layout.styled.js';
 import { Section } from 'pages/Home/Home.styled.js';
+import { Loader } from '../../components/Loader/Loader';
 
 export default function Layout() {
   return (
@@ -18,7 +19,7 @@ export default function Layout() {
         </Section>
       </Header>
       <GlobalStyle />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
     </>
