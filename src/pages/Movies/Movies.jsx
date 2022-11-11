@@ -33,7 +33,9 @@ export default function Movies() {
         console.log(error.message);
       }
     }
+
     fetchMovieByName(movieName);
+    
   }, [searchParams]);
 
   const updateQuery = inputValue => {

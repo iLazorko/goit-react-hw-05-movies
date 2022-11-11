@@ -1,9 +1,7 @@
 import axios from 'axios';
 
-// const KEY = '592f788186491be4ee714869feb8dcec';
-
-const KEY = '5f2a66e63fa9a8139a0b7e8b9aba27ca';
-const URL = 'https://api.themoviedb.org/';
+const KEY = '592f788186491be4ee714869feb8dcec';
+const URL = 'https://api.themoviedb.org/3/';
 axios.defaults.baseURL = URL;
 
 // запит на фільми в тренді
@@ -11,7 +9,7 @@ axios.defaults.baseURL = URL;
 export const getTrendingMovies = async () => {
   try {
     const fetchTrendingMovies = await axios.get(
-      `3/trending/movie/day?api_key=${KEY}`
+      `trending/movie/day?api_key=${KEY}`
     );
 
     return await fetchTrendingMovies.data.results;
@@ -25,7 +23,7 @@ export const getTrendingMovies = async () => {
 export const getMovieById = async id => {
   try {
     const fetchMovieById = await axios.get(
-      `3/movie/${id}?api_key=${KEY}&language=en-US`
+      `movie/${id}?api_key=${KEY}&language=en-US`
     );
 
     return await fetchMovieById.data;
@@ -39,9 +37,9 @@ export const getMovieById = async id => {
 export const getMovieByName = async (name, page = 1) => {
   try {
     const fetchMovieByName = await axios.get(
-      `3/search/movie?api_key=${KEY}&language=en-US&query=${name}&page=${page}&include_adult=false`
-      // `search/movie/?api_key=${KEY}&language=en-US&query=${name}&page=${page}&include_adult=false`
+      `search/movie/?api_key=${KEY}&language=en-US&query=${name}&page=${page}&include_adult=false`
     );
+
     return await fetchMovieByName.data;
   } catch (error) {
     console.log(error);
@@ -53,7 +51,7 @@ export const getMovieByName = async (name, page = 1) => {
 export const getActors = async id => {
   try {
     const fetchActors = await axios.get(
-      `3/movie/${id}/credits?api_key=${KEY}&language=en-US`
+      `movie/${id}/credits?api_key=${KEY}&language=en-US`
     );
 
     return await fetchActors.data.cast;
@@ -67,7 +65,7 @@ export const getActors = async id => {
 export const getReviews = async id => {
   try {
     const fetchReviews = await axios.get(
-      `3/movie/${id}/reviews?api_key=${KEY}&language=en-US`
+      `movie/${id}/reviews?api_key=${KEY}&language=en-US`
     );
 
     return await fetchReviews.data.results;
