@@ -10,7 +10,7 @@ import {
   StyledLink,
 } from './MovieDetails.styled.js';
 
-import defaultImg from '../../img/poster-movie.jpg';
+import defaultImg from '../../img/poster-default.jpg';
 
 export const MovieDetails = ({ movie }) => {
   const { title, poster_path, overview, release_date, vote_average, genres } =
