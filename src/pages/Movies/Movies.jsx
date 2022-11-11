@@ -23,6 +23,7 @@ export default function Movies() {
       try {
         setIsLoading(true);
         const moviesByName = await getMovieByName(movieName);
+        console.log(moviesByName.results);
         setMovies(moviesByName.results);
         setIsLoading(false);
       } catch (error) {
