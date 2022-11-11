@@ -41,9 +41,6 @@ export const getMovieByName = async name => {
     const fetchMovieByName = await axios.get(
       `search/movie/?api_key=${KEY}&language=en-US&query=${name}&page=1&include_adult=false`
     );
-    console.log(name);
-    console.log(fetchMovieByName.data);
-
     return await fetchMovieByName.data;
   } catch (error) {
     console.log(error);
