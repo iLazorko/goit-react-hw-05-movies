@@ -35,7 +35,6 @@ export default function Movies() {
     }
 
     fetchMovieByName(movieName);
-    
   }, [searchParams]);
 
   const updateQuery = inputValue => {
@@ -58,3 +57,7 @@ export default function Movies() {
     </>
   );
 }
+
+// Request URL: https://api.themoviedb.org/3/search/movie/?api_key=592f788186491be4ee714869feb8dcec&language=en-US&query=inna&page=1&include_adult=false
+
+// Request URL: http://api.themoviedb.org/3/search/movie?api_key=592f788186491be4ee714869feb8dcec&include_adult=false&language=en-US&page=1&query=inna
