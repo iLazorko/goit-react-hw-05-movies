@@ -5,8 +5,11 @@ import { SearchForm } from '../../components/SearchForm/SearchForm';
 import { MovieList } from 'components/MovieList/MovieList';
 import { Section } from 'pages/Home/Home.styled';
 import { Loader } from '../../components/Loader/Loader';
+import { Button } from 'components/Button/Button';
 
 export default function Movies() {
+  const [page, setPage] = useState(1);
+  const [total, setTotal] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -22,18 +25,28 @@ export default function Movies() {
     (async function fetchMovieByName() {
       try {
         setIsLoading(true);
-        const moviesByName = await getMovieByName(movieName);
-        setMovies(moviesByName.results);
+        const moviesByName = await getMovieByName(movieName, page);
+        setMovies(prev => [...prev, ...moviesByName.results]);
+
+        setTotal(moviesByName.total_pages);
+
         setIsLoading(false);
       } catch (error) {
         console.log(error);
         console.log(error.message);
       }
     })();
-  }, [searchParams]);
+  }, [searchParams, page]);
 
   const updateQuery = inputValue => {
+    setMovies([]);
+    setPage(1);
+    setTotal(null);
     setSearchParams({ query: inputValue });
+  };
+
+  const loadMore = () => {
+    setPage(prevState => prevState + 1);
   };
 
   return (
@@ -42,10 +55,15 @@ export default function Movies() {
         <Section>
           <SearchForm updateQuery={updateQuery} />
           {isLoading && <Loader />}
-          {movies.length > 0 && (
-            <div>
-              <MovieList movies={movies} state={{ from: location }} />
-            </div>
+          {movies.length > 0 && !isLoading && (
+            <>
+              <div>
+                <MovieList movies={movies} state={{ from: location }} />
+              </div>
+            </>
+          )}
+          {total > 1 && page < total && !isLoading && (
+            <Button loadMore={loadMore} />
           )}
         </Section>
       </main>
