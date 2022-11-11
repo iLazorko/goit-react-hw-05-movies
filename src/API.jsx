@@ -36,10 +36,10 @@ export const getMovieById = async id => {
 
 // пошук фільмів
 
-export const getMovieByName = async (name, page) => {
+export const getMovieByName = async name => {
   try {
     const fetchMovieByName = await axios.get(
-      `search/movie/?api_key=${KEY}&language=en-US&query=${name}&page=${page}&include_adult=false`
+      `search/movie/?api_key=${KEY}&language=en-US&query=${name}&include_adult=false`
     );
 
     return await fetchMovieByName.data;

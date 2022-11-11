@@ -10,6 +10,8 @@ import {
   StyledLink,
 } from './MovieDetails.styled.js';
 
+import defaultImg from '../../img/poster-movie.jpg';
+
 export const MovieDetails = ({ movie }) => {
   const { title, poster_path, overview, release_date, vote_average, genres } =
     movie;
@@ -19,7 +21,11 @@ export const MovieDetails = ({ movie }) => {
     <>
       <MovieWrap>
         <img
-          src={`https://image.tmdb.org/t/p/original${poster_path}`}
+          src={
+            poster_path
+              ? `https://image.tmdb.org/t/p/original${poster_path}`
+              : defaultImg
+          }
           alt={`${title}`}
           width="300"
         />

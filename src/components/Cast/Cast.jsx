@@ -11,6 +11,7 @@ import {
   InfoActor,
   InfoCharacter,
 } from './Cast.styled.js';
+import defaultImg from '../../img/anonymous.jpg';
 
 export default function Cast() {
   const { movieId } = useParams();
@@ -41,7 +42,11 @@ export default function Cast() {
               return (
                 <Item key={id}>
                   <img
-                    src={`https://image.tmdb.org/t/p/original${profile_path}`}
+                    src={
+                      profile_path
+                        ? `https://image.tmdb.org/t/p/original${profile_path}`
+                        : defaultImg
+                    }
                     alt={`${name}`}
                     width="150"
                   />

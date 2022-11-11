@@ -6,6 +6,7 @@ import {
   MovieInfoWrap,
   MovieInfo,
 } from './MovieList.styled.js';
+import defaultImg from '../../img/poster-default.jpg';
 
 export const MovieList = ({ movies, state }) => {
   return (
@@ -18,7 +19,11 @@ export const MovieList = ({ movies, state }) => {
               <StyledLink to={`/movies/${id}`} state={state}>
                 <MovieInfoWrap>
                   <img
-                    src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+                    src={
+                      poster_path
+                        ? `https://image.tmdb.org/t/p/w500/${poster_path}`
+                        : defaultImg
+                    }
                     alt={title}
                   />
                   <MovieInfo>"{title}"</MovieInfo>
