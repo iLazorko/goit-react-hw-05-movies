@@ -50,6 +50,7 @@ export default function Cast() {
                     alt={`${name}`}
                     width="150"
                   />
+
                   <InfoActor>{name}</InfoActor>
                   <InfoCharacter>{character}</InfoCharacter>
                 </Item>
