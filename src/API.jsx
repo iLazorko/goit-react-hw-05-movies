@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const KEY = '592f788186491be4ee714869feb8dcec';
-const URL = 'https://api.themoviedb.org/3/';
+const URL = 'http://api.themoviedb.org/3/';
 axios.defaults.baseURL = URL;
 
 // запит на фільми в тренді
@@ -20,8 +20,6 @@ export const getTrendingMovies = async () => {
 
 // запит на фільм по id
 
-//api.themoviedb.org/3/movie/{movie_id}?api_key=<<api_key>>&language=en-US
-
 export const getMovieById = async id => {
   try {
     const fetchMovieById = await axios.get(
@@ -36,10 +34,11 @@ export const getMovieById = async id => {
 
 // пошук фільмів
 
-export const getMovieByName = async name => {
+export const getMovieByName = async (name, page = 1) => {
   try {
     const fetchMovieByName = await axios.get(
-      `search/movie/?api_key=${KEY}&language=en-US&query=${name}&page=1&include_adult=false`
+      `search/movie?api_key=${KEY}&language=en-US&query=${name}&page=${page}&include_adult=false`
+      // `search/movie/?api_key=${KEY}&language=en-US&query=${name}&page=${page}&include_adult=false`
     );
     return await fetchMovieByName.data;
   } catch (error) {
