@@ -28,6 +28,7 @@ export default function Movies() {
         setMovies(moviesByName.results);
         setIsLoading(false);
       } catch (error) {
+        console.log(error);
         console.log(error.message);
       }
     })();

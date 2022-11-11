@@ -39,7 +39,7 @@ export const getMovieById = async id => {
 export const getMovieByName = async name => {
   try {
     const fetchMovieByName = await axios.get(
-      `search/movie/?api_key=${KEY}&language=en-US&query=${name}&page=1&&include_adult=false`
+      `search/movie/?api_key=${KEY}&language=en-US&query=${name}&page=1&include_adult=false`
     );
     console.log(name);
     console.log(fetchMovieByName.data);
