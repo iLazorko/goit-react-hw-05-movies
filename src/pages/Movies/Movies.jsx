@@ -19,7 +19,7 @@ export default function Movies() {
       return;
     }
 
-    (async function fetchMovieByName() {
+    async function fetchMovieByName(movieName) {
       try {
         setIsLoading(true);
         const moviesByName = await getMovieByName(movieName);
@@ -32,7 +32,8 @@ export default function Movies() {
         console.log(error);
         console.log(error.message);
       }
-    })();
+    }
+    fetchMovieByName(movieName);
   }, [searchParams]);
 
   const updateQuery = inputValue => {
